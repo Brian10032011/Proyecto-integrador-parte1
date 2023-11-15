@@ -1,7 +1,8 @@
 import os
 import random
+from functools import reduce
 
-from videojuego import Juego, string_laberinto
+from videojuego_class import Juego
 
 # miJuego = Juego(string_laberinto)
 # miJuego.__main__()
@@ -11,8 +12,11 @@ def mapaAleatorio(path_dir):
     random_file = random.choice(list_files)
     path_completo = path_dir + "\\" + random_file
     # import pdb;pdb.set_trace()
-    f = open(path_completo, "r")
-    return f.read()
+    with open(path_completo, "r") as archivo:
+        lineas = archivo.readlines()
+    cadena_de_lineas = reduce(lambda a , b : a+b , lineas)
+    # import pdb;pdb.set_trace()
+    return cadena_de_lineas
 
 class JuegoArchivo(Juego):
     def __init__(self, path_dir):    
