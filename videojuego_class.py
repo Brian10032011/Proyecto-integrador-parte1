@@ -72,6 +72,10 @@ class Juego(object):
                 string_nuevo += j
             string_nuevo += "\n"
         self.laberinto_desnormalizado = string_nuevo[:-1]
+
+    def finJuego(self):
+        response = "Gracias por jugar {} , tu juego a finalizado"
+        print(response.format(nombre))
     
     def __main__(self):
         continue_game = True
@@ -85,6 +89,7 @@ class Juego(object):
                 print(self.laberinto_desnormalizado)
                 self.movimientos_user()                
             else:
+                self.finJuego()
                 continue_game = False
 
 
